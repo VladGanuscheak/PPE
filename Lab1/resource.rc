@@ -1,0 +1,43 @@
+Icon ICON "myicon.ico"
+
+Menu MENU
+{
+ POPUP "&File"
+ {
+  MENUITEM "&Open...\tCtrl-O", 3
+  MENUITEM "&Save", 4
+  MENUITEM "Save &As...", 5
+  MENUITEM SEPARATOR
+  MENUITEM "&Hex view", 6, CHECKED GRAYED
+  MENUITEM "&Exit\tAlt-F4", 7
+ }
+ POPUP "&Edit"
+ {
+  POPUP "Resize button1"
+  {
+      MENUITEM "&Default", 8
+      MENUITEM "Bigger", 9
+      MENUITEM "Smaller", 10
+  }
+  POPUP "Resize button2"
+  {
+      MENUITEM "&Default", 11
+      MENUITEM "Bigger", 12
+      MENUITEM "Smaller", 13
+  }
+  POPUP "Resize window"
+  {
+   MENUITEM "450x300", 14
+   MENUITEM "550x420", 15
+   MENUITEM "700x512", 16
+   MENUITEM "800x600", 17
+   MENUITEM "1012X700", 18
+  }
+  MENUITEM SEPARATOR
+  MENUITEM "Search", 19
+ }
+ POPUP "&Help"
+ {
+  MENUITEM "&About...\tF1", 20
+ }
+}
