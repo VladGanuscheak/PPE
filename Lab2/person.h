@@ -8,24 +8,24 @@ using namespace std;
 
 typedef struct person
 {
-    string name;                             // ïîëå, óêàçûâàşùåå èìÿ ÷åëîâåêà
+    string name;                             // Ğ¿Ğ¾Ğ»Ğµ, ÑƒĞºĞ°Ğ·Ñ‹Ğ²Ğ°ÑÑ‰ĞµĞµ Ğ¸Ğ¼Ñ Ñ‡ĞµĞ»Ğ¾Ğ²ĞµĞºĞ°
                                              //
-    string surname;                          // ïîëå, óêàçûâàşùåå ôàìèëèş ÷åëîâåêà
+    string surname;                          // Ğ¿Ğ¾Ğ»Ğµ, ÑƒĞºĞ°Ğ·Ñ‹Ğ²Ğ°ÑÑ‰ĞµĞµ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ Ñ‡ĞµĞ»Ğ¾Ğ²ĞµĞºĞ°
                                              //
-    string middle_name;                      // ïîëå, óêàçûâàşùåå îò÷åñòâî ÷åëîâåêà
+    string middle_name;                      // Ğ¿Ğ¾Ğ»Ğµ, ÑƒĞºĞ°Ğ·Ñ‹Ğ²Ğ°ÑÑ‰ĞµĞµ Ğ¾Ñ‚Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ñ‡ĞµĞ»Ğ¾Ğ²ĞµĞºĞ°
                                              //
-    string date_of_birth;                    // ïîëå, óêàçûâàşùåå äàòó ğïæäåíèÿ ÷åëîâåêà
+    string date_of_birth;                    // Ğ¿Ğ¾Ğ»Ğµ, ÑƒĞºĞ°Ğ·Ñ‹Ğ²Ğ°ÑÑ‰ĞµĞµ Ğ´Ğ°Ñ‚Ñƒ Ñ€Ğ¿Ğ¶Ğ´ĞµĞ½Ğ¸Ñ Ñ‡ĞµĞ»Ğ¾Ğ²ĞµĞºĞ°
                                              //
-    string address;                          // ïîëå, óêàçûâàşùåå àäğåñ ïğîæèâàíèÿ
+    string address;                          // Ğ¿Ğ¾Ğ»Ğµ, ÑƒĞºĞ°Ğ·Ñ‹Ğ²Ğ°ÑÑ‰ĞµĞµ Ğ°Ğ´Ñ€ĞµÑ Ğ¿Ñ€Ğ¾Ğ¶Ğ¸Ğ²Ğ°Ğ½Ğ¸Ñ
 
-    person()                           // êîíñòğóêòîğ ïî óìîë÷àíèş
+    person()                           // ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€ Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ
     :  name("")
     ,  surname("")
     ,  middle_name("")
     ,  date_of_birth("")
     ,  address("")
     {}
-    person(                            // ïàğàìåòğèçèğîâàííûé êîíñòğóêòîğ
+    person(                            // Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ¸Ğ·Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ½Ñ‹Ğ¹ ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€
            string new_name,
            string new_surname,
            string new_middle_name,
@@ -37,11 +37,11 @@ typedef struct person
     ,  middle_name(new_middle_name)
     ,  date_of_birth(new_date_of_birth)
     {}
-    string info()                      // âûâîä èíôîğìàöèè â îäíó ñòğî÷êó
+    string info()                      // Ğ²Ñ‹Ğ²Ğ¾Ğ´ Ğ¸Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ğ¸ Ğ² Ğ¾Ğ´Ğ½Ñƒ ÑÑ‚Ñ€Ğ¾Ñ‡ĞºÑƒ
     {
         return name + " " + surname + " " + middle_name + " " + date_of_birth + "\n";
     }
-    friend ifstream &operator>>(ifstream &input, person &p)    // ïåğåãğóæåííûé îïåğàòîğ ñ÷èòûâàíèÿ ñ ôàéëà
+    friend ifstream &operator>>(ifstream &input, person &p)    // Ğ¿ĞµÑ€ĞµĞ³Ñ€ÑƒĞ¶ĞµĞ½Ğ½Ñ‹Ğ¹ Ğ¾Ğ¿ĞµÑ€Ğ°Ñ‚Ğ¾Ñ€ ÑÑ‡Ğ¸Ñ‚Ñ‹Ğ²Ğ°Ğ½Ğ¸Ñ Ñ Ñ„Ğ°Ğ¹Ğ»Ğ°
     {
         input >> p.name >> p.surname >> p.middle_name >> p.date_of_birth >> p.address;
         return input;
