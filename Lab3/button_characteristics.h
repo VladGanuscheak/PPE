@@ -1,30 +1,30 @@
 #ifndef BUTTON_CHARACTERISTICS_H_INCLUDED
 #define BUTTON_CHARACTERISTICS_H_INCLUDED
 
-/* структура, в которой хранятся характеристики кнопки */
+/* СЃС‚СЂСѓРєС‚СѓСЂР°, РІ РєРѕС‚РѕСЂРѕР№ С…СЂР°РЅСЏС‚СЃСЏ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РєРЅРѕРїРєРё */
 typedef struct button_characteristics
 {
-   int horizontal_position;                                                // позиция левого верхнего угла кнопки в
-                                                                           // проекции на ось Ox
+   int horizontal_position;                                                // РїРѕР·РёС†РёСЏ Р»РµРІРѕРіРѕ РІРµСЂС…РЅРµРіРѕ СѓРіР»Р° РєРЅРѕРїРєРё РІ
+                                                                           // РїСЂРѕРµРєС†РёРё РЅР° РѕСЃСЊ Ox
                                                                            //
-   int vertical_position;                                                  // позиция левого верхнего угла кнопки в
-                                                                           // проекции на ось Oy
+   int vertical_position;                                                  // РїРѕР·РёС†РёСЏ Р»РµРІРѕРіРѕ РІРµСЂС…РЅРµРіРѕ СѓРіР»Р° РєРЅРѕРїРєРё РІ
+                                                                           // РїСЂРѕРµРєС†РёРё РЅР° РѕСЃСЊ Oy
                                                                            //
-   int width;                                                              // расстояние между левым верхнем и правым верхнем
-                                                                           // углами в проекции на ось Ox
+   int width;                                                              // СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ Р»РµРІС‹Рј РІРµСЂС…РЅРµРј Рё РїСЂР°РІС‹Рј РІРµСЂС…РЅРµРј
+                                                                           // СѓРіР»Р°РјРё РІ РїСЂРѕРµРєС†РёРё РЅР° РѕСЃСЊ Ox
                                                                            //
-   int height;                                                             // расстояние между левым верхнем и правым верхнем
-                                                                           // углами в проекции на ось Oy
+   int height;                                                             // СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ Р»РµРІС‹Рј РІРµСЂС…РЅРµРј Рё РїСЂР°РІС‹Рј РІРµСЂС…РЅРµРј
+                                                                           // СѓРіР»Р°РјРё РІ РїСЂРѕРµРєС†РёРё РЅР° РѕСЃСЊ Oy
                                                                            //
 
-   button_characteristics()                                                // конструктор по умолчанию
+   button_characteristics()                                                // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
    :  horizontal_position(0)
    ,  vertical_position(0)
    ,  width(0)
    ,  height(0)
    {}
 
-   button_characteristics(int hor_pos, int vert_pos, int wid, int hei)     // параметризованный конструктор
+   button_characteristics(int hor_pos, int vert_pos, int wid, int hei)     // РїР°СЂР°РјРµС‚СЂРёР·РѕРІР°РЅРЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
    :  horizontal_position(hor_pos)
    ,  vertical_position(vert_pos)
    ,  width(wid)
