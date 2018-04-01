@@ -75,7 +75,7 @@ namespace drawPrimitives
         {
             SetROP2(hdc, R2_NOTXORPEN);
 
-            {   // до нажатия левой кнопки мыши:
+            {   // п╢п╬ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 MoveToEx(hdc, *StartX, *StartY, NULL);
                 LineTo(hdc, *EndX, *StartY);
                 MoveToEx(hdc, *StartX, *StartY, NULL);
@@ -90,7 +90,7 @@ namespace drawPrimitives
             *EndX = LOWORD(lp);
             *EndY = HIWORD(lp);
 
-            {   // после нажатия левой кнопки мыши:
+            {   // п©п╬я│п╩п╣ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 MoveToEx(hdc, *StartX, *StartY, NULL);
                 LineTo(hdc, *EndX, *StartY);
                 MoveToEx(hdc, *StartX, *StartY, NULL);
@@ -124,7 +124,7 @@ namespace drawPrimitives
             *EndY = *StartY + sgY * minVal;
 
 
-            {   // до нажатия левой кнопки мыши:
+            {   // п╢п╬ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 MoveToEx(hdc, *StartX, *StartY, NULL);
                 LineTo(hdc, *EndX, *StartY);
                 MoveToEx(hdc, *StartX, *StartY, NULL);
@@ -146,7 +146,7 @@ namespace drawPrimitives
             *EndX = *StartX + sgX * minVal;
             *EndY = *StartY + sgY * minVal;
 
-            {   // после нажатия левой кнопки мыши:
+            {   // п©п╬я│п╩п╣ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 MoveToEx(hdc, *StartX, *StartY, NULL);
                 LineTo(hdc, *EndX, *StartY);
                 MoveToEx(hdc, *StartX, *StartY, NULL);
@@ -172,7 +172,7 @@ namespace drawPrimitives
         {
             SetROP2(hdc, R2_NOTXORPEN);
 
-            {   // до нажатия левой кнопки мыши:
+            {   // п╢п╬ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 int middleX = (*StartX + *EndX) / 2;
                 int middleY = (*StartY + *EndY) / 2;
                 int width = absVal(*StartX - *EndX) / 2;
@@ -194,7 +194,7 @@ namespace drawPrimitives
             *EndX = LOWORD(lp);
             *EndY = HIWORD(lp);
 
-            {   // после нажатия левой кнопки мыши:
+            {   // п©п╬я│п╩п╣ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 int middleX = (*StartX + *EndX) / 2;
                 int middleY = (*StartY + *EndY) / 2;
                 int width = absVal(*StartX - *EndX) / 2;
@@ -227,7 +227,7 @@ namespace drawPrimitives
         {
             SetROP2(hdc, R2_NOTXORPEN);
 
-            {   // до нажатия левой кнопки мыши:
+            {   // п╢п╬ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 int width = absVal(*StartX - *EndX);
                 int height = absVal(*StartY - *EndY);
                 int minVal = minimum(width, height);
@@ -259,7 +259,7 @@ namespace drawPrimitives
             *EndX = LOWORD(lp);
             *EndY = HIWORD(lp);
 
-            {   // после нажатия левой кнопки мыши:
+            {   // п©п╬я│п╩п╣ п╫п╟п╤п╟я┌п╦я▐ п╩п╣п╡п╬п╧ п╨п╫п╬п©п╨п╦ п╪я▀я┬п╦:
                 int width = absVal(*StartX - *EndX);
                 int height = absVal(*StartY - *EndY);
                 int minVal = minimum(width, height);
