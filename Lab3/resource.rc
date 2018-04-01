@@ -1,0 +1,74 @@
+#include "defines.h"
+Icon ICON "myicon.ico"
+
+Menu MENU
+{
+    POPUP "&File"
+    {
+        MENUITEM "&View", ID_FILE_VIEW, CHECKED GRAYED
+        MENUITEM "&Exit\tCtrl+X", ID_FILE_EXIT
+    }
+    POPUP "&Edit"
+    {
+        POPUP "&Create"
+        {
+            MENUITEM "&Rectangle\tShift+R", ID_EDIT_CREATE_RECTANGLE
+            MENUITEM "&Square\tShift+S", ID_EDIT_CREATE_SQUARE
+            MENUITEM "&Ellipse\tShift+E", ID_EDIT_CREATE_ELLIPSE
+            MENUITEM "&Circle\tShift+C", ID_EDIT_CREATE_CIRCLE
+            MENUITEM "&Straight line\tShift+L", ID_EDIT_CREATE_STRAIGHT_LINE
+            MENUITEM "&Polyline\tShift+P", ID_EDIT_CREATE_POLYLINE
+            MENUITEM "&Bezier curve\tShift+B", ID_EDIT_CREATE_BEZIER_CURVE
+        }
+        POPUP "&Set"
+        {
+            POPUP "&Window size"
+            {
+                MENUITEM "&Default\tTab+D", ID_EDIT_SET_WINDOW_SIZE_DEFAULT
+                MENUITEM "&Minimum\tTab+N", ID_EDIT_SET_WINDOW_SIZE_MINIMUM
+                MENUITEM "&Maximum\tTab+M", ID_EDIT_SET_WINDOW_SIZE_MAXIMUM
+            }
+            POPUP "&Color"
+            {
+                MENUITEM "&Red", ID_EDIT_SET_COLOR_RED
+                MENUITEM "&Green", ID_EDIT_SET_COLOR_GREEN
+                MENUITEM "&Blue", ID_EDIT_SET_COLOR_BLUE
+                MENUITEM "&White", ID_EDIT_SET_COLOR_WHITE
+                MENUITEM "&Black", ID_EDIT_SET_COLOR_BLACK
+                MENUITEM "&Proper color", ID_EDIT_SET_COLOR_PROPER_COLOR
+            }
+            POPUP "&Zoom"
+            {
+                MENUITEM "&In", ID_EDIT_SET_ZOOM_IN
+                MENUITEM "&Out", ID_EDIT_SET_ZOOM_OUT
+            }
+            POPUP "&Mouse"
+            {
+                MENUITEM "&Default", ID_EDIT_SET_MOUSE_DEFAULT
+                MENUITEM "&Eraser", ID_EDIT_SET_MOUSE_ERASER
+                MENUITEM "&Tassel", ID_EDIT_SET_MOUSE_TASSEL
+            }
+        }
+        MENUITEM SEPARATOR
+        MENUITEM "&Undo\tCtrl+Z", ID_EDIT_UNDO
+    }
+    POPUP "&About"
+    {
+        MENUITEM "&Setting window size", ID_ABOUT_SETTING_WINDOW_SIZE
+        MENUITEM "&Choosing color", ID_ABOUT_CHOOSING_COLOR
+        MENUITEM SEPARATOR
+        POPUP "&Figures"
+        {
+            MENUITEM "&Rectangle", ID_ABOUT_FIGURES_RECTANGLE
+            MENUITEM "&Square", ID_ABOUT_FIGURES_SQUARE
+            MENUITEM "&Ellipse", ID_ABOUT_FIGURES_ELLIPSE
+            MENUITEM "&Circle", ID_ABOUT_FIGURES_CIRCLE
+            MENUITEM "&Straight line", ID_ABOUT_FIGURES_STRAIGHT_LINE
+            MENUITEM "&Polyline", ID_ABOUT_FIGURES_POLYLINE
+            MENUITEM "&Bezier curve", ID_ABOUT_FIGURES_BEZIER_CURVE
+        }
+        MENUITEM SEPARATOR
+        MENUITEM "&Author", ID_ABOUT_AUTHOR
+    }
+}
+
