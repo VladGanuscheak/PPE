@@ -8,52 +8,52 @@
 #include "functions.h"
 #include "drawing.h"
 
-/* процедура обработки сообщений для главного окна */
+/* РїСЂРѕС†РµРґСѓСЂР° РѕР±СЂР°Р±РѕС‚РєРё СЃРѕРѕР±С‰РµРЅРёР№ РґР»СЏ РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР° */
 LRESULT CALLBACK MainWinProc(HWND hw,UINT msg,WPARAM wp,LPARAM lp)
 {
 	static int StartX, StartY;
 	static int EndX, EndY;
 	static bool draw = false;
 
-    static HWND radioBox[7];                                  // массив радиокнопок
+    static HWND radioBox[7];                                  // РјР°СЃСЃРёРІ СЂР°РґРёРѕРєРЅРѕРїРѕРє
                                                               //
-    static HWND editColor;                                 // переменная, отвечающая за ввод текста пользователем
+    static HWND editColor;                                 // РїРµСЂРµРјРµРЅРЅР°СЏ, РѕС‚РІРµС‡Р°СЋС‰Р°СЏ Р·Р° РІРІРѕРґ С‚РµРєСЃС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
                                                               //
-    bt rb[7];                                                 // массив структуры button_characteristics (bt)
+    bt rb[7];                                                 // РјР°СЃСЃРёРІ СЃС‚СЂСѓРєС‚СѓСЂС‹ button_characteristics (bt)
 
 
-    const char* name[7] = {                                   // имена кнопок (в их порядке)
+    const char* name[7] = {                                   // РёРјРµРЅР° РєРЅРѕРїРѕРє (РІ РёС… РїРѕСЂСЏРґРєРµ)
                                                               //
-                        "Rectangle",                          // прямоугольник
+                        "Rectangle",                          // РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
                                                               //
-                        "Square",                             // квадрат
+                        "Square",                             // РєРІР°РґСЂР°С‚
                                                               //
-                        "Ellipse",                            // эллипс
+                        "Ellipse",                            // СЌР»Р»РёРїСЃ
                                                               //
-                        "Circle",                             // круг
+                        "Circle",                             // РєСЂСѓРі
                                                               //
-                        "Straight line",                      // прямая линия
+                        "Straight line",                      // РїСЂСЏРјР°СЏ Р»РёРЅРёСЏ
                                                               //
-                        "Polyline",                           // множество прямых линий
+                        "Polyline",                           // РјРЅРѕР¶РµСЃС‚РІРѕ РїСЂСЏРјС‹С… Р»РёРЅРёР№
                                                               //
-                        "Bezier curve",                       // кривая Безье
+                        "Bezier curve",                       // РєСЂРёРІР°СЏ Р‘РµР·СЊРµ
                     };
 
     RECT Rect;
 
-    static bool ID_RECTANGLE_CHECKED = false;                // логическая переменная, указывающая на состояние прямоугольника
+    static bool ID_RECTANGLE_CHECKED = false;                // Р»РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, СѓРєР°Р·С‹РІР°СЋС‰Р°СЏ РЅР° СЃРѕСЃС‚РѕСЏРЅРёРµ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
                                                              //
-    static bool ID_SQUARE_CHECKED = false;                   // логическая переменная, указывающая на состояние квадрата
+    static bool ID_SQUARE_CHECKED = false;                   // Р»РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, СѓРєР°Р·С‹РІР°СЋС‰Р°СЏ РЅР° СЃРѕСЃС‚РѕСЏРЅРёРµ РєРІР°РґСЂР°С‚Р°
                                                              //
-    static bool ID_ELLIPSE_CHECKED = false;                  // логическая переменная, указывающая на состояние эллипса
+    static bool ID_ELLIPSE_CHECKED = false;                  // Р»РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, СѓРєР°Р·С‹РІР°СЋС‰Р°СЏ РЅР° СЃРѕСЃС‚РѕСЏРЅРёРµ СЌР»Р»РёРїСЃР°
                                                              //
-    static bool ID_CIRCLE_CHECKED = false;                   // логическая переменная, указывающая на состояние круга
+    static bool ID_CIRCLE_CHECKED = false;                   // Р»РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, СѓРєР°Р·С‹РІР°СЋС‰Р°СЏ РЅР° СЃРѕСЃС‚РѕСЏРЅРёРµ РєСЂСѓРіР°
                                                              //
-    static bool ID_STRAIGHT_LINE_CHECKED = false;            // логическая переменная, указывающая на состояние прямой линии
+    static bool ID_STRAIGHT_LINE_CHECKED = false;            // Р»РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, СѓРєР°Р·С‹РІР°СЋС‰Р°СЏ РЅР° СЃРѕСЃС‚РѕСЏРЅРёРµ РїСЂСЏРјРѕР№ Р»РёРЅРёРё
                                                              //
-    static bool ID_POLYLINE_CHECKED = false;                 // логическая переменная, указывающая на состояние множества соединённых линий
+    static bool ID_POLYLINE_CHECKED = false;                 // Р»РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, СѓРєР°Р·С‹РІР°СЋС‰Р°СЏ РЅР° СЃРѕСЃС‚РѕСЏРЅРёРµ РјРЅРѕР¶РµСЃС‚РІР° СЃРѕРµРґРёРЅС‘РЅРЅС‹С… Р»РёРЅРёР№
                                                              //
-    static bool ID_BEZIER_CURVE_CHECKED = false;             // логическая переменная, указывающая на состояние кривой Безье
+    static bool ID_BEZIER_CURVE_CHECKED = false;             // Р»РѕРіРёС‡РµСЃРєР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, СѓРєР°Р·С‹РІР°СЋС‰Р°СЏ РЅР° СЃРѕСЃС‚РѕСЏРЅРёРµ РєСЂРёРІРѕР№ Р‘РµР·СЊРµ
 
 
     static PAINTSTRUCT ps;
@@ -72,36 +72,36 @@ LRESULT CALLBACK MainWinProc(HWND hw,UINT msg,WPARAM wp,LPARAM lp)
 
     switch (msg)
     {
-    case WM_CREATE: // создание окна
+    case WM_CREATE: // СЃРѕР·РґР°РЅРёРµ РѕРєРЅР°
         GetClientRect(hw, &Rect);
 
-        for(int i = 0; i < 7; i++)                          // динамическая расстановка характеристики (позиции) кнопок в rb[index]
+        for(int i = 0; i < 7; i++)                          // РґРёРЅР°РјРёС‡РµСЃРєР°СЏ СЂР°СЃСЃС‚Р°РЅРѕРІРєР° С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё (РїРѕР·РёС†РёРё) РєРЅРѕРїРѕРє РІ rb[index]
         {
             rb[i] = bt(20, (Rect.bottom - 140) / 7 * i + 10 * i + 30, 110, (Rect.bottom - 140) / 7);
         }
-        for(int i = 0; i < 7; i++)                          // динамическая расстановка кнопок на экране
+        for(int i = 0; i < 7; i++)                          // РґРёРЅР°РјРёС‡РµСЃРєР°СЏ СЂР°СЃСЃС‚Р°РЅРѕРІРєР° РєРЅРѕРїРѕРє РЅР° СЌРєСЂР°РЅРµ
         radioBox[i] = CreateWindow(
-                     "button",                              // указатель на зарегистрированное имя класса
+                     "button",                              // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅРѕРµ РёРјСЏ РєР»Р°СЃСЃР°
                                                             //
-                     name[i],                               // указатель на имя окна
+                     name[i],                               // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РёРјСЏ РѕРєРЅР°
                                                             //
-                     WS_CHILD | WS_VISIBLE| BS_RADIOBUTTON, // стиль окна
+                     WS_CHILD | WS_VISIBLE| BS_RADIOBUTTON, // СЃС‚РёР»СЊ РѕРєРЅР°
                                                             //
-                     rb[i].horizontal_position,             // горизонтальная позиция окна
+                     rb[i].horizontal_position,             // РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅР°СЏ РїРѕР·РёС†РёСЏ РѕРєРЅР°
                                                             //
-                     rb[i].vertical_position,               // вертикальная позиция окна
+                     rb[i].vertical_position,               // РІРµСЂС‚РёРєР°Р»СЊРЅР°СЏ РїРѕР·РёС†РёСЏ РѕРєРЅР°
                                                             //
-                     rb[i].width,                           // ширина окна
+                     rb[i].width,                           // С€РёСЂРёРЅР° РѕРєРЅР°
                                                             //
-                     rb[i].height,                          // высота окна
+                     rb[i].height,                          // РІС‹СЃРѕС‚Р° РѕРєРЅР°
                                                             //
-                     hw,                                    // дескриптор родительского или окна владельца
+                     hw,                                    // РґРµСЃРєСЂРёРїС‚РѕСЂ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РёР»Рё РѕРєРЅР° РІР»Р°РґРµР»СЊС†Р°
                                                             //
-                     (HMENU)i,                              // дескриптор меню или ID дочернего окна
+                     (HMENU)i,                              // РґРµСЃРєСЂРёРїС‚РѕСЂ РјРµРЅСЋ РёР»Рё ID РґРѕС‡РµСЂРЅРµРіРѕ РѕРєРЅР°
                                                             //
-                     NULL,                                  // дескриптор экземпляра приложения
+                     NULL,                                  // РґРµСЃРєСЂРёРїС‚РѕСЂ СЌРєР·РµРјРїР»СЏСЂР° РїСЂРёР»РѕР¶РµРЅРёСЏ
                                                             //
-                     NULL                                   // указатель на данные создания окна
+                     NULL                                   // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РґР°РЅРЅС‹Рµ СЃРѕР·РґР°РЅРёСЏ РѕРєРЅР°
                      );
          editColor = CreateWindow(
                                      "edit",
@@ -379,7 +379,7 @@ LRESULT CALLBACK MainWinProc(HWND hw,UINT msg,WPARAM wp,LPARAM lp)
                     }
                     case ID_FILE_EXIT: // MENU -> FILE -> EXIT
                     {
-                        /* пользователь закрыл окно, программа может завершаться */
+                        /* РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РєСЂС‹Р» РѕРєРЅРѕ, РїСЂРѕРіСЂР°РјРјР° РјРѕР¶РµС‚ Р·Р°РІРµСЂС€Р°С‚СЊСЃСЏ */
                         PostQuitMessage(0);
                         break;
                     }
@@ -697,7 +697,7 @@ LRESULT CALLBACK MainWinProc(HWND hw,UINT msg,WPARAM wp,LPARAM lp)
                         break;
                     }
 
-                    default: /* все остальные команды */
+                    default: /* РІСЃРµ РѕСЃС‚Р°Р»СЊРЅС‹Рµ РєРѕРјР°РЅРґС‹ */
                         wsprintf(buf,"Command code: %d",LOWORD(wp));
                         MessageBox(hw,buf,"MessageBox",MB_OK|MB_ICONINFORMATION);
                 }
@@ -751,13 +751,13 @@ LRESULT CALLBACK MainWinProc(HWND hw,UINT msg,WPARAM wp,LPARAM lp)
         {
             LPMINMAXINFO lpMMI = (LPMINMAXINFO)lp;
             // *****************************************
-            lpMMI->ptMinTrackSize.x = MIN_WINDOW_SIZE_OX; // установка минимальной ширины экрана
+            lpMMI->ptMinTrackSize.x = MIN_WINDOW_SIZE_OX; // СѓСЃС‚Р°РЅРѕРІРєР° РјРёРЅРёРјР°Р»СЊРЅРѕР№ С€РёСЂРёРЅС‹ СЌРєСЂР°РЅР°
                                                           //
-            lpMMI->ptMinTrackSize.y = MIN_WINDOW_SIZE_OY; // установка минимальной высоты экрана
+            lpMMI->ptMinTrackSize.y = MIN_WINDOW_SIZE_OY; // СѓСЃС‚Р°РЅРѕРІРєР° РјРёРЅРёРјР°Р»СЊРЅРѕР№ РІС‹СЃРѕС‚С‹ СЌРєСЂР°РЅР°
             // *****************************************
-            lpMMI->ptMaxTrackSize.x = MAX_WINDOW_SIZE_OX; // установка максимальной ширины экрана
+            lpMMI->ptMaxTrackSize.x = MAX_WINDOW_SIZE_OX; // СѓСЃС‚Р°РЅРѕРІРєР° РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ С€РёСЂРёРЅС‹ СЌРєСЂР°РЅР°
                                                           //
-            lpMMI->ptMaxTrackSize.y = MAX_WINDOW_SIZE_OY; // установка максимальной высоты экрана
+            lpMMI->ptMaxTrackSize.y = MAX_WINDOW_SIZE_OY; // СѓСЃС‚Р°РЅРѕРІРєР° РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ РІС‹СЃРѕС‚С‹ СЌРєСЂР°РЅР°
         }
     }
     return 0;
@@ -977,12 +977,7 @@ LRESULT CALLBACK MainWinProc(HWND hw,UINT msg,WPARAM wp,LPARAM lp)
         }
     }
     return 0;
-    //
-    //
-    //
-
-
-
+		    
     case WM_LBUTTONDOWN:
 		{
 		    if (ID_RECTANGLE_CHECKED)
@@ -1368,7 +1363,7 @@ LRESULT CALLBACK MainWinProc(HWND hw,UINT msg,WPARAM wp,LPARAM lp)
     return 0;
 
     case WM_DESTROY: // done
-        /* пользователь закрыл окно, программа может завершаться */
+        /* РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РєСЂС‹Р» РѕРєРЅРѕ, РїСЂРѕРіСЂР°РјРјР° РјРѕР¶РµС‚ Р·Р°РІРµСЂС€Р°С‚СЊСЃСЏ */
         PostQuitMessage(0);
         return 0;
     default:
