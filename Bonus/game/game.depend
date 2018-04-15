@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1521449581 source:c:\users\user\desktop\second_semester\winapi\game\main.cpp
+	<windows.h>
+	<time.h>
+	"defines.h"
+	"button_characteristics.h"
+
+1521334436 c:\users\user\desktop\second_semester\winapi\game\defines.h
+
+1521340536 c:\users\user\desktop\second_semester\winapi\game\button_characteristics.h
+
+1521416746 source:c:\users\user\desktop\second_semester\winapi\game\mainwinproc.cpp
+	<windows.h>
+	<random>
+	<ctime>
+	<cstdlib>
+	"defines.h"
+	"button_characteristics.h"
+
+1521389527 source:c:\users\user\desktop\second_semester\winapi\game\resource.rc
+	"defines.h"
+
