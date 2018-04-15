@@ -1,0 +1,10 @@
+D:\c\kangaroo\kangaroo\bin\Debug\kangaroo.exe.config
+D:\c\kangaroo\kangaroo\bin\Debug\kangaroo.exe
+D:\c\kangaroo\kangaroo\bin\Debug\kangaroo.pdb
+D:\c\kangaroo\kangaroo\obj\Debug\kangaroo.csprojResolveAssemblyReference.cache
+D:\c\kangaroo\kangaroo\obj\Debug\kangaroo.Form1.resources
+D:\c\kangaroo\kangaroo\obj\Debug\kangaroo.Properties.Resources.resources
+D:\c\kangaroo\kangaroo\obj\Debug\kangaroo.csproj.GenerateResource.Cache
+D:\c\kangaroo\kangaroo\obj\Debug\kangaroo.csproj.CoreCompileInputs.cache
+D:\c\kangaroo\kangaroo\obj\Debug\kangaroo.exe
+D:\c\kangaroo\kangaroo\obj\Debug\kangaroo.pdb
